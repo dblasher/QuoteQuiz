@@ -25,11 +25,11 @@ namespace QuoteQuiz.Models
 
         [StringLength(20, MinimumLength = 2)]
         [Required(ErrorMessage = "Please enter the character's name")]
-        public Character character { get; set; }
+        public Character Character { get; set; }
 
         [StringLength(20, MinimumLength = 2)]
         [Required(ErrorMessage = "Please enter the movie's title")]
-        public Movie movie { get; set; }
+        public Movie Movie { get; set; }
 
     }
 }
