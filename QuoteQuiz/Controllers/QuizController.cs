@@ -17,7 +17,7 @@ namespace QuoteQuiz.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult TakeQuiz(string character, string title, Quote quote)
+        public RedirectToActionResult TakeQuiz(string name, string title, Quote quote)
         {
             //if(quote.character == character && quote.title ==title)
             //show correct

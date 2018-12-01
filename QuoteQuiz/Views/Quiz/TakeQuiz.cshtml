@@ -8,6 +8,50 @@
     <li role="presentation" class="active"><a style="text-decoration: none; color: inherit" asp-action="TakeQuiz">Take The Quiz</a></li>
     <li role="presentation"><a a style="text-decoration: none; color: inherit" asp-action="AddQuote">Submit a Quote</a></li>
 </ul>
-<h3>Quiz page</h3>
 
-<a a style="text-decoration: none; color: inherit" asp-action="Results">Submit Answers</a>
+<div class="container">
+    <div class="page-header text-center">
+        <h1>"Are you not entertained?!"</h1>
+    </div>
+    <!--
+        <div class="quiz" id="quiz" data-toggle="buttons">
+        <label class="btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="1">1 One</label>
+        <label class=" btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="2">2 Two</label>
+        <label class=" btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">3 Three</label>
+        <label class=" btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">4 Four</label>
+    </div>
+       -->
+    <form class="p-a-1" asp-action="TakeQuiz" method="post">
+        <h2>Who said this?</h2>
+        <div class="radio">
+            <label><input type="radio" name="name" value="Frodo">Frodo</label>
+        </div>                                     
+        <div class="radio">                        
+            <label><input type="radio" name="name" value="Maximus" >Maximus</label>
+        </div>                                     
+        <div class="radio">                        
+            <label><input type="radio" name="name" value="Clark Kent">Clark Kent</label>
+        </div>                                   
+        <div class="radio">                        
+            <label><input type="radio" name="name" value="Spongebob">Spongebob</label>
+        </div>                                    
+        <!--begin second column-->               
+        <h2>In which movie?</h2>                   
+        <div class="radio">                        
+            <label><input type="radio" name="title" value="Batman vs. Superman">Batman vs. Superman</label>
+        </div>                                     
+        <div class="radio">                       
+            <label><input type="radio" name="title" value="Godfather Part 2">Godfather Part 2</label>
+        </div>                                     
+        <div class="radio">                        
+            <label><input type="radio" name="title" value="Gladiator">Gladiator</label>
+        </div>                                    
+        <div class="radio">                        
+            <label><input type="radio" name="title" value="The Fellowship of the Ring">The Fellowship of the Ring</label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+
+        <a a style="text-decoration: none; color: inherit" asp-action="Results">Submit Answers</a>
+</div>
