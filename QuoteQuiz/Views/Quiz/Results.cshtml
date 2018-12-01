@@ -1,3 +1,12 @@
 ﻿@{
-    Layout = null;
+    Layout = "_quizLayout";
 }
+@{ViewData["Title"] = "Quiz";
+}
+<ul class="nav nav-tabs">
+    <li role="presentation"><a style= "text-decoration: none; color: inherit" asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
+    <li role="presentation" class="active"><a style= "text-decoration: none; color: inherit" asp-action="TakeQuiz">Take The Quiz</a></li>
+    <li role="presentation"><a a style= "text-decoration: none; color: inherit" asp-action="AddQuote">Submit a Quote</a></li>
+</ul>
+
+<h3>Results page</h3> 

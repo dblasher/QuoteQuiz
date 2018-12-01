@@ -38,7 +38,7 @@ namespace QuoteQuiz.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddQuote(string text, string character, string title, string link)
+        public RedirectToActionResult AddQuote(string text, string character, string title, string link)
         {
             //use LINQ to check there are no quotes already in the db with the same text
             //create charater
@@ -47,7 +47,7 @@ namespace QuoteQuiz.Controllers
             //save to DB
             //send user back to Home page
             //viewBag.message = "Thank you for adding a quote!
-            return View();
+            return RedirectToAction("Index", "Home", new { area = "" });
         }
 
     }
