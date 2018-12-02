@@ -66,7 +66,7 @@ namespace QuoteQuiz.Repositories
                     Text = "That's my secret Cap, I'm always angry",
                     Character = c3,
                     Movie = m3,
-                    Link = "https://www.youtube.com/watch?v=uTak8cZJE74"
+                    Link = "https://www.youtube.com/watch?v=MpBmPgQkHf0"
                 };
                 context.Quotes.Add(q3);
 
