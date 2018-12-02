@@ -4,11 +4,24 @@
 @{ViewData["Title"] = "Quiz";
 }
 <ul class="nav nav-tabs">
-    <li role="presentation"><a style= "text-decoration: none; color: inherit" asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
-    <li role="presentation" class="active"><a style= "text-decoration: none; color: inherit" asp-action="TakeQuiz">Take The Quiz</a></li>
-    <li role="presentation"><a a style= "text-decoration: none; color: inherit" asp-action="AddQuote">Submit a Quote</a></li>
+    <li role="presentation"><a style="text-decoration: none; color: inherit" asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
+    <li role="presentation" class="active"><a style="text-decoration: none; color: inherit" asp-action="TakeQuiz">Take The Quiz</a></li>
+    <li role="presentation"><a a style="text-decoration: none; color: inherit" asp-action="AddQuote">Submit a Quote</a></li>
 </ul>
 <div class="page-header text-center">
-    <h1>"Are you not entertained?!"<br /><small>Maximus, <em>Gladiator</em></small></h1>
+    <h1>"@ViewBag.text"<br /><small>@ViewBag.character, <em>@ViewBag.movie</em></small></h1>
 </div>
-<h3>Results page</h3> 
+<!--Hard coded gladiator video for, Link will come from ViewBag.link-->
+<div class="container text-center">
+    <h2> @ViewBag.result</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/7DDxe8FvpPI?start=1"
+            frameborder="0" allow="accelerometer; autoplay; encrypted-media;
+        gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <br /><a href="@ViewBag.link">Youtube Link</a><br />
+
+    <button type="button" class="btn btn-info btn-lg">
+        <a style="text-decoration: none; color: inherit" asp-controller="Quiz" asp-action="TakeQuiz">
+            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Another Question Please!
+        </a>
+    </button>
+</div>
