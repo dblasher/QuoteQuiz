@@ -136,7 +136,7 @@ namespace QuoteQuiz.Controllers
                            select quotes).Any();
             if (exists)
                 //notify user their quote is already in, verbatim!
-                ViewBag.message = " Sorry, that quote has already been added";
+                TempData["message"] = "Sorry, that quote has already been added";
             else
             {
                 Character name = new Character() { Name = character };
@@ -154,10 +154,10 @@ namespace QuoteQuiz.Controllers
                 };
                 repo.AddQuote(quote);
                 //notify user of successful submission
-                ViewBag.message = "Thank you for adding a quote!";
+                TempData["message"] = "Thank you for adding a quote!";
             }
 
-            return RedirectToAction("Index", "Home", new { area = "" });
+            return RedirectToAction("Index", "Home");
         }
 
     }

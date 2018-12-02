@@ -10,10 +10,11 @@ namespace QuoteQuiz.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public ActionResult Index()
         {
+           
             //might need to pass a string model or something coming from the AddQuote post method 
-            //indicating the user's submission has been successful
+
             return View();
         }
     }
