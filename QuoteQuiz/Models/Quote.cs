@@ -15,12 +15,14 @@ namespace QuoteQuiz.Models
         public string Text { get; set; }
 
         /// <summary>
-        /// has start with https://www.youtube.com/watch?v=,
+        /// has to start with https://www.youtube.com/watch?v=,
+        /// regex = /^(https:\/\/youtube\.com\/watch\?v=)[\w]+$/
         /// snip off this portion so it's just the unique video string
         /// example: 7DDxe8FvpPI
         /// </summary>
-        [StringLength(100, MinimumLength = 32)]
-        [Required(ErrorMessage = "Please provide the full youtube link: https://www.youtube.com/watch?v=")]
+        [RegularExpression(@"^(https://www.youtube.com/watch\?v=)[\w]+$",
+                ErrorMessage = "Please provide the full youtube link, example: https://www.youtube.com/watch?v=7DDxe8FvpPI")]
+        [Required(ErrorMessage = "Please provide the full youtube link, example: https://www.youtube.com/watch?v=7DDxe8FvpPI")]
         public string Link { get; set; }
 
         [StringLength(20, MinimumLength = 2)]
