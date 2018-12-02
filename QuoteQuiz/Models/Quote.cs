@@ -20,7 +20,7 @@ namespace QuoteQuiz.Models
         /// snip off this portion so it's just the unique video string
         /// example: 7DDxe8FvpPI
         /// </summary>
-        [RegularExpression(@"^(https://www.youtube.com/watch\?v=)[\w]+$",
+        [RegularExpression(@"^(https://www.youtube.com/watch\?v=)[\w-_]+$",
                 ErrorMessage = "Please provide the full youtube link, example: https://www.youtube.com/watch?v=7DDxe8FvpPI")]
         [Required(ErrorMessage = "Please provide the full youtube link, example: https://www.youtube.com/watch?v=7DDxe8FvpPI")]
         public string Link { get; set; }

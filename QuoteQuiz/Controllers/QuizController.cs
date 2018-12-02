@@ -12,7 +12,7 @@ namespace QuoteQuiz.Controllers
     {
         IQuoteRepository repo;
 
-        private static Random rng = new Random();
+        public static Random rng = new Random();
 
         public QuizController(IQuoteRepository r)
         {
@@ -43,7 +43,7 @@ namespace QuoteQuiz.Controllers
             List<Quote> quotes = repo.Quotes.ToList();
 
             //establish answer's location
-            int key = rng.Next(quotes.Count - 1);
+            int key = rng.Next(quotes.Count);
 
             //grab the answer quote based on our key
             Quote answer = quotes[key];
@@ -63,7 +63,7 @@ namespace QuoteQuiz.Controllers
             //add random quote movie titles and character names to the list of respective options
             do
             {
-                int i = rng.Next(quotes.Count - 1);
+                int i = rng.Next(quotes.Count);
                 titles.Add(quotes[i].Movie.Title);
                 names.Add(quotes[i].Character.Name);
                 quotes.RemoveAt(i);
@@ -99,11 +99,10 @@ namespace QuoteQuiz.Controllers
         public IActionResult TakeQuiz(string name, string title, int answerId)
         {
             //I really don't like this forced list shenanigans, but this is how I was shown
-            List<Quote> quotes = (from q in repo.Quotes
+            Quote answer = (from q in repo.Quotes
                            where q.QuoteID == answerId
-                           select q).ToList();
+                           select q).FirstOrDefault();
             //should always succeed, but may want to use a try catch here 
-            Quote answer = quotes[0];
             if (answer.Character.Name == name && answer.Movie.Title == title)
                 ViewBag.result = "CORRECT!";
             else
@@ -129,15 +128,35 @@ namespace QuoteQuiz.Controllers
         }
 
         [HttpPost]
-        public RedirectToActionResult AddQuote(string text, string character, string title, string link)
+        public RedirectToActionResult AddQuote(string text, string character, string movie, string link)
         {
             //use LINQ to check there are no quotes already in the db with the same text
-            //create charater
-            //create movie
-            //create quote using the charater, movie, and link
-            //save to DB
-            //send user back to Home page
-            //viewBag.message = "Thank you for adding a quote!
+            bool exists = (from quotes in repo.Quotes
+                           where quotes.Text == text
+                           select quotes).Any();
+            if (exists)
+                //notify user their quote is already in, verbatim!
+                ViewBag.message = " Sorry, that quote has already been added";
+            else
+            {
+                Character name = new Character() { Name = character };
+                Movie title = new Movie() { Title = movie };
+                //truncate link, removes everything before the unique video Id
+                //Or just let Results.chtml do the truncating so the database has full youtube links
+                //int i = link.IndexOf("=");
+                //string subLink = link.Remove(0, i + 1);
+                Quote quote = new Quote()
+                {
+                    Text = text,
+                    Character = name,
+                    Movie = title,
+                    Link = link
+                };
+                repo.AddQuote(quote);
+                //notify user of successful submission
+                ViewBag.message = "Thank you for adding a quote!";
+            }
+
             return RedirectToAction("Index", "Home", new { area = "" });
         }
 

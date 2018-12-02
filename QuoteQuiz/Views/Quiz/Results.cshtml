@@ -2,6 +2,8 @@
     Layout = "_quizLayout";
 }
 @{ViewData["Title"] = "Quiz";
+    int i = @ViewBag.link.IndexOf("=");
+    string subLink = @ViewBag.link.Remove(0, i + 1);
 }
 <ul class="nav nav-tabs">
     <li role="presentation"><a style="text-decoration: none; color: inherit" asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
@@ -14,7 +16,7 @@
 <!--Hard coded gladiator video for, Link will come from ViewBag.link-->
 <div class="container text-center">
     <h2> @ViewBag.result</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/7DDxe8FvpPI?start=1"
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/@subLink"
             frameborder="0" allow="accelerometer; autoplay; encrypted-media;
         gyroscope; picture-in-picture" allowfullscreen></iframe>
     <br />
