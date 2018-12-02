@@ -19,18 +19,30 @@ namespace QuoteQuiz.Repositories
             AppDbContext context = app.ApplicationServices.GetRequiredService<AppDbContext>();
             context.Database.EnsureCreated();
 
-            //If there are no stories in the DB, we'll add some
-            if (!context.Quotes.Any())
+            //Should always have atleast 4 quotes, otherwise the TakeQuiz method won't have enough data to work properly
+            if (context.Quotes.Count() < 4)
             {
-                //create a character
+                //create 4 characters
                 Character c1 = new Character { Name = "Maximus" };
+                Character c2 = new Character { Name = "Nacho" };
+                Character c3 = new Character { Name = "Bruce Banner" };
+                Character c4 = new Character { Name = "Yoda" };
                 context.Characters.Add(c1);
+                context.Characters.Add(c2);
+                context.Characters.Add(c3);
+                context.Characters.Add(c4);
 
-                //create a movie
+                //create 4 movies
                 Movie m1 = new Movie { Title = "Gladiator" };
+                Movie m2 = new Movie { Title = "Nacho Libre" };
+                Movie m3 = new Movie { Title = "The Avengers" };
+                Movie m4 = new Movie { Title = "The Empire Strikes Back" };
                 context.Movies.Add(m1);
+                context.Movies.Add(m2);
+                context.Movies.Add(m3);
+                context.Movies.Add(m4);
 
-                //create a story by that user, add that user's comment to the story
+                //create quotes by that character, from that movie
                 Quote q1 = new Quote
                 {
                     Text = "Are you not entertained!?",
@@ -39,6 +51,33 @@ namespace QuoteQuiz.Repositories
                     Link = "https://www.youtube.com/watch?v=7DDxe8FvpPI"
                 };
                 context.Quotes.Add(q1);
+
+                Quote q2 = new Quote
+                {
+                    Text = "Don't you want a little taste of the glory? See what it tastes like?",
+                    Character = c2,
+                    Movie = m2,
+                    Link = "https://www.youtube.com/watch?v=ck2DLjDHuYo"
+                };
+                context.Quotes.Add(q2);
+
+                Quote q3 = new Quote
+                {
+                    Text = "That's my secret Cap, I'm always angry",
+                    Character = c3,
+                    Movie = m3,
+                    Link = "https://www.youtube.com/watch?v=uTak8cZJE74"
+                };
+                context.Quotes.Add(q3);
+
+                Quote q4 = new Quote
+                {
+                    Text = "Do or do not. There is no try",
+                    Character = c4,
+                    Movie = m4,
+                    Link = "https://www.youtube.com/watch?v=h5SNAluOj6U"
+                };
+                context.Quotes.Add(q4);
 
                 //save all the added seed data to the database
                 context.SaveChanges();

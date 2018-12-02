@@ -25,30 +25,30 @@
     <form class="p-a-1" asp-action="TakeQuiz" method="post">
         <h2>Who said this?</h2>
         <div class="radio">
-            <label><input type="radio" name="name" value="Frodo">Frodo</label>
+            <label><input type="radio" name="name" value="@ViewBag.n1">@ViewBag.n1</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="name" value="Maximus">Maximus</label>
+            <label><input type="radio" name="name" value="@ViewBag.n2">@ViewBag.n2</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="name" value="Clark Kent">Clark Kent</label>
+            <label><input type="radio" name="name" value="@ViewBag.n3">@ViewBag.n3</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="name" value="Spongebob">Spongebob</label>
+            <label><input type="radio" name="name" value="@ViewBag.n4">@ViewBag.n4</label>
         </div>
         <!--begin second column-->
         <h2>In which movie?</h2>
         <div class="radio">
-            <label><input type="radio" name="title" value="Batman vs. Superman">Batman vs. Superman</label>
+            <label><input type="radio" name="title" value="@ViewBag.t1">@ViewBag.t1</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="title" value="Godfather Part 2">Godfather Part 2</label>
+            <label><input type="radio" name="title" value="@ViewBag.t2">@ViewBag.t2</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="title" value="Gladiator">Gladiator</label>
+            <label><input type="radio" name="title" value="@ViewBag.t3">@ViewBag.t3</label>
         </div>
         <div class="radio">
-            <label><input type="radio" name="title" value="The Fellowship of the Ring">The Fellowship of the Ring</label>
+            <label><input type="radio" name="title" value="@ViewBag.t4">@ViewBag.t4</label>
         </div>
         <!--hidden input holding the answer index location-->
         <input type="hidden" name="answerId" value="@ViewBag.answerId">

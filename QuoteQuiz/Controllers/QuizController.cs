@@ -11,22 +11,82 @@ namespace QuoteQuiz.Controllers
     public class QuizController : Controller
     {
         IQuoteRepository repo;
+
+        private static Random rng = new Random();
+
         public QuizController(IQuoteRepository r)
         {
             repo = r;
         }
+        //helper function for randomizing the list of quote answers
+        public static void Shuffle( List<string> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                string value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
 
+
+        /// <summary>
+        /// Quiz Controller function for selecting a random quote as the answer and three random options to display to the user
+        /// </summary>
+        /// <returns></returns>
         public IActionResult TakeQuiz()
         {
-            //need to pass a random quote for scoring
+            //need a list of quotes to randomly pull from
             List<Quote> quotes = repo.Quotes.ToList();
-            //for now it only has one quote, so I'll take the quote at index 0
-            //next iteration I'll need a random number from 0 to quotes.Count
-            Quote answer = quotes[0];
-            //can I pass viewbag or viewdata from view to controller?
+
+            //establish answer's location
+            int key = rng.Next(quotes.Count - 1);
+
+            //grab the answer quote based on our key
+            Quote answer = quotes[key];
+
+            //Lists for holding quiz options, need to be shuffled once filled with four items, one of is the correct name and title
+            List<string> titles = new List<string>();
+            List<string> names = new List<string>();
+            titles.Add(answer.Movie.Title);
+            names.Add(answer.Character.Name);
+
+            //remove the answer from quotes so it doesn't show up twice as an option
+            quotes.RemoveAt(key);
+
+            //track how many options we have, can change to make the quiz harder/easier
+            int options = 0;
+
+            //add random quote movie titles and character names to the list of respective options
+            do
+            {
+                int i = rng.Next(quotes.Count - 1);
+                titles.Add(quotes[i].Movie.Title);
+                names.Add(quotes[i].Character.Name);
+                quotes.RemoveAt(i);
+                options++;
+            } while (options < 3);
+
+            //shuffle my list of options before passing to the view
+            Shuffle(titles);
+            Shuffle(names);
+
+            //now the ugly part of populating ViewBag with all our options
+            ViewBag.t1 = titles[0];
+            ViewBag.t2 = titles[1];
+            ViewBag.t3 = titles[2];
+            ViewBag.t4 = titles[3];
+            ViewBag.n1 = names[0];
+            ViewBag.n2 = names[1];
+            ViewBag.n3 = names[2];
+            ViewBag.n4 = names[3];
+            //hidden quote Id that will be needed for evaluting the quiz
             ViewBag.answerId = answer.QuoteID;
             return View(answer);
-        }
+        } //end of method for populating the quiz
 
         /// <summary>
         /// Quiz Controller function that evaluates user quiz responses as correct or incorrect
