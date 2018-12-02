@@ -8,6 +8,6 @@
 #### The “Add A Quote” page will be a form for adding a quote, the character who speaks it, the movie it is from, and the youtube link prooving the quote is true.
 
 ### Tools Used:
-#### MVC Core 2.1, Razor Pages, SQL Server, Entity Framework, Azure
+#### MVC Core 2.1, Razor Pages, Bootstrap SQL Server, Entity Framework, Azure
 
 
