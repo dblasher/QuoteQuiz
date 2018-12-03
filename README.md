@@ -1,4 +1,4 @@
-# Quote Quiz
+# [Quote Quiz](https://quotequiz.azurewebsites.net/)
 ## By Daniel Blasher
 ### Term Project for CS 295N, Fall 2018, Lane Community College
 
@@ -8,4 +8,6 @@
 #### The “Add A Quote” page will be a form for adding a quote, the character who speaks it, the movie it is from, and the youtube link prooving the quote is true.
 
 ### Tools Used:
-#### MVC Core 2.1, Razor Pages, SQL Server, Entity Framework, Azure
+#### MVC Core 2.1, Razor Pages, Bootstrap SQL Server, Entity Framework, Azure
+
+
