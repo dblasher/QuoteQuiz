@@ -25,11 +25,11 @@ namespace QuoteQuiz.Models
         [Required(ErrorMessage = "Please provide the full youtube link, example: https://www.youtube.com/watch?v=7DDxe8FvpPI")]
         public string Link { get; set; }
 
-        [StringLength(20, MinimumLength = 2)]
+        [StringLength(40, MinimumLength = 2)]
         [Required(ErrorMessage = "Please enter the character's name")]
         public Character Character { get; set; }
 
-        [StringLength(20, MinimumLength = 2)]
+        [StringLength(50, MinimumLength = 2)]
         [Required(ErrorMessage = "Please enter the movie's title")]
         public Movie Movie { get; set; }
 

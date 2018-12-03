@@ -4,14 +4,14 @@
 }
 @{ViewData["Title"] = "Quiz";
 }
-<ul class="nav nav-tabs">
-    <li role="presentation"><a style="text-decoration: none; color: inherit" asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
-    <li role="presentation" class="active"><a style="text-decoration: none; color: inherit" asp-action="TakeQuiz">Take The Quiz</a></li>
-    <li role="presentation"><a a style="text-decoration: none; color: inherit" asp-action="AddQuote">Submit a Quote</a></li>
+<ul class="nav nav-tabs topnav">
+   <li role="presentation"><a asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
+    <li role="presentation"class="active"><a asp-action="TakeQuiz">Take The Quiz</a></li>
+    <li role="presentation"><a asp-action="AddQuote">Submit a Quote</a></li>
 </ul>
 
 <div class="container">
-    <div class="page-header text-center">
+    <div class="page-header text-center" style="font-family: Acme, sans-serif">
         <h1>"@Model.Text"</h1>
     </div>
     <!--
@@ -21,37 +21,49 @@
         <label class=" btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="3">3 Three</label>
         <label class=" btn btn-lg btn-primary btn-block"><span class="btn-label"><i class="glyphicon glyphicon-chevron-right"></i></span> <input type="radio" name="q_answer" value="4">4 Four</label>
     </div>
-       -->
-    <form class="p-a-1" asp-action="TakeQuiz" method="post">
-        <h2>Who said this?</h2>
-        <div class="radio">
-            <label><input type="radio" name="name" value="@ViewBag.n1">@ViewBag.n1</label>
-        </div>
-        <div class="radio">
-            <label><input type="radio" name="name" value="@ViewBag.n2">@ViewBag.n2</label>
-        </div>
-        <div class="radio">
-            <label><input type="radio" name="name" value="@ViewBag.n3">@ViewBag.n3</label>
-        </div>
-        <div class="radio">
-            <label><input type="radio" name="name" value="@ViewBag.n4">@ViewBag.n4</label>
-        </div>
-        <!--begin second column-->
-        <h2>In which movie?</h2>
-        <div class="radio">
-            <label><input type="radio" name="title" value="@ViewBag.t1">@ViewBag.t1</label>
-        </div>
-        <div class="radio">
-            <label><input type="radio" name="title" value="@ViewBag.t2">@ViewBag.t2</label>
-        </div>
-        <div class="radio">
-            <label><input type="radio" name="title" value="@ViewBag.t3">@ViewBag.t3</label>
-        </div>
-        <div class="radio">
-            <label><input type="radio" name="title" value="@ViewBag.t4">@ViewBag.t4</label>
-        </div>
-        <!--hidden input holding the answer index location-->
-        <input type="hidden" name="answerId" value="@ViewBag.answerId">
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+    -->
+    <div class="row">
+        <form class="p-a-1" asp-action="TakeQuiz" method="post">
+            <div class="col-md-6">
+                <div class="col-xs-12">
+                    <br><h2>Who said this?</h2><br />
+                    <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                        <label class="btn active">
+                            <input type="radio" name="name" value="@ViewBag.n1" checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>@ViewBag.n1</span>
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="name" value="@ViewBag.n2"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>@ViewBag.n2</span>
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="name" value="@ViewBag.n3"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>@ViewBag.n3</span>
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="name" value="@ViewBag.n4"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>@ViewBag.n4</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-xs-12">
+                    <br><h2>In which movie?</h2><br />
+                    <div class="btn-group btn-group-vertical" data-toggle="buttons">
+                        <label class="btn active">
+                            <input type="radio" name="title" value="@ViewBag.t1" checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>@ViewBag.t1</span>
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="title" value="@ViewBag.t2"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>@ViewBag.t2</span>
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="title" value="@ViewBag.t3"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>@ViewBag.t3</span>
+                        </label>
+                        <label class="btn">
+                            <input type="radio" name="title" value="@ViewBag.t4"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-dot-circle-o fa-2x"></i> <span>@ViewBag.t4</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="answerId" value="@ViewBag.answerId">
+            <button type="submit" class="btn btn-success btn-lg">Submit</button>
+        </form>
+    </div>
 </div>

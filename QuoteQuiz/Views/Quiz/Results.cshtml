@@ -5,13 +5,13 @@
     int i = @ViewBag.link.IndexOf("=");
     string subLink = @ViewBag.link.Remove(0, i + 1);
 }
-<ul class="nav nav-tabs">
-    <li role="presentation"><a style="text-decoration: none; color: inherit" asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
-    <li role="presentation" class="active"><a style="text-decoration: none; color: inherit" asp-action="TakeQuiz">Take The Quiz</a></li>
-    <li role="presentation"><a a style="text-decoration: none; color: inherit" asp-action="AddQuote">Submit a Quote</a></li>
+<ul class="nav nav-tabs topnav">
+    <li role="presentation"><a asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
+    <li role="presentation"><a asp-action="TakeQuiz">Take The Quiz</a></li>
+    <li role="presentation"><a asp-action="AddQuote">Submit a Quote</a></li>
 </ul>
 <div class="page-header text-center">
-    <h1>"@ViewBag.text"<br /><small>@ViewBag.character, <em>@ViewBag.movie</em></small></h1>
+    <h1 style="font-family: Acme, sans-serif">"@ViewBag.text"<br /><small>@ViewBag.character, <em>@ViewBag.movie</em></small></h1>
 </div>
 <!--Hard coded gladiator video for, Link will come from ViewBag.link-->
 <div class="container text-center">

@@ -10,14 +10,14 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"></script>
 
-<ul class="nav nav-tabs">
-    <li role="presentation"><a style="text-decoration: none; color: inherit" asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
-    <li role="presentation"><a style="text-decoration: none; color: inherit" asp-action="TakeQuiz">Take The Quiz</a></li>
-    <li role="presentation" class="active"><a a style="text-decoration: none; color: inherit" asp-action="AddQuote">Submit a Quote</a></li>
+<ul class="nav nav-tabs topnav">
+    <li role="presentation"><a asp-controller="Home" asp-action="Index">The Quote Quiz</a></li>
+    <li role="presentation"><a asp-action="TakeQuiz">Take The Quiz</a></li>
+    <li role="presentation" class="active"><a asp-action="AddQuote">Submit a Quote</a></li>
 </ul>
 
-<div class="container text-center">
-    <h1>add a quote page</h1>
+<div class="container text-center" style="font-size:1.2em">
+    <h1 style=" font-family:Acme, sans-serif">Add a new quote</h1>
 
     <form class="p-a-1" asp-action="AddQuote" method="post" asp-antiforgery="true">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
