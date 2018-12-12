@@ -11,8 +11,8 @@
 #### MVC Core 2.1, Razor Pages, Bootstrap SQL Server, Entity Framework, Azure
 
 ### Setup:
-Make sure you have Entity Framework and the MVC Core 2.1 installed in Visual Studio.
-run `dotnet ef create database` to create a local db on your machine.
-then run `dotnet ef database update` to apply the seedData
-Then the app should be ready to run locally!
+#### Make sure you have Entity Framework and the MVC Core 2.1 installed in Visual Studio.
+#### run `dotnet ef create database` to create a local db on your machine.
+#### then run `dotnet ef database update` to apply the seedData
+#### Then the app should be ready to run locally!
 
